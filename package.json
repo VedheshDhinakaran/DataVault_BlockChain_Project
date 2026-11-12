@@ -1,0 +1,20 @@
+{
+  "name": "datavault",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DataVault: blockchain-based consent management for personal data sharing",
+  "workspaces": ["shared", "contracts", "gateway", "frontend"],
+  "scripts": {
+    "compile": "npm run compile -w contracts",
+    "test": "npm test -w shared && npm test -w contracts && npm test -w gateway",
+    "test:contracts": "npm test -w contracts",
+    "test:gateway": "npm test -w gateway",
+    "gas": "npm run gas -w contracts",
+    "chain": "npm run node -w contracts",
+    "deploy:local": "npm run deploy:local -w contracts",
+    "deploy:sepolia": "npm run deploy:sepolia -w contracts",
+    "gateway": "npm start -w gateway",
+    "frontend": "npm run dev -w frontend",
+    "benchmark": "npm run benchmark -w contracts"
+  }
+}

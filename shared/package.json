@@ -1,0 +1,20 @@
+{
+  "name": "@datavault/shared",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Crypto (AES-256-GCM + ECIES), SIWE helpers and contract constants shared by the gateway, frontend and scripts",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./deployments/*": "./deployments/*"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "@noble/curves": "^1.9.7",
+    "@noble/hashes": "^1.8.0",
+    "ethers": "^6.15.0"
+  }
+}

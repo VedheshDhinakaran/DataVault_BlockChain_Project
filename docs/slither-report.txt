@@ -1,0 +1,35 @@
+INFO:Detectors:
+Detector: incorrect-equality
+ConsentRegistry.getConsent(uint256) (contracts/ConsentRegistry.sol#330-333) uses a dangerous strict equality:
+	- _consents[consentId].status == Status.None (contracts/ConsentRegistry.sol#331)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+Detector: timestamp
+ConsentRegistry.isAccessAllowed(uint256,address,bytes32,uint8) (contracts/ConsentRegistry.sol#279-291) uses timestamp for comparisons
+	Dangerous comparisons:
+	- o == address(0) || action == 0 (contracts/ConsentRegistry.sol#285)
+	- requester == o (contracts/ConsentRegistry.sol#286)
+ConsentRegistry.isAccessAllowedByScan(uint256,address,bytes32,uint8) (contracts/ConsentRegistry.sol#296-312) uses timestamp for comparisons
+	Dangerous comparisons:
+	- o == address(0) || action == 0 (contracts/ConsentRegistry.sol#302)
+	- requester == o (contracts/ConsentRegistry.sol#303)
+ConsentRegistry.getData(uint256) (contracts/ConsentRegistry.sol#325-328) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _data[dataId].owner == address(0) (contracts/ConsentRegistry.sol#326)
+ConsentRegistry.getConsent(uint256) (contracts/ConsentRegistry.sol#330-333) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _consents[consentId].status == Status.None (contracts/ConsentRegistry.sol#331)
+ConsentRegistry.isConsentEffective(uint256) (contracts/ConsentRegistry.sol#348-351) uses timestamp for comparisons
+	Dangerous comparisons:
+	- c.status == Status.Active && (c.expiresAt == 0 || block.timestamp < c.expiresAt) (contracts/ConsentRegistry.sol#350)
+ConsentRegistry._allows(ConsentRegistry.Consent,uint8) (contracts/ConsentRegistry.sol#357-361) uses timestamp for comparisons
+	Dangerous comparisons:
+	- c.expiresAt != 0 && block.timestamp >= c.expiresAt (contracts/ConsentRegistry.sol#359)
+ConsentRegistry._validateTerms(uint8,uint64) (contracts/ConsentRegistry.sol#363-366) uses timestamp for comparisons
+	Dangerous comparisons:
+	- expiresAt != 0 && expiresAt <= block.timestamp (contracts/ConsentRegistry.sol#365)
+ConsentRegistry._activeConsentOwnedByCaller(uint256) (contracts/ConsentRegistry.sol#368-373) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _data[c.dataId].owner != msg.sender (contracts/ConsentRegistry.sol#371)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Slither:. analyzed (3 contracts with 102 detectors), 9 result(s) found

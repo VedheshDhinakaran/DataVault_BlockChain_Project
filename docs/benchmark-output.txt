@@ -1,0 +1,22 @@
+Gas used per operation
+┌──────────────────────┬────────┐
+│ (index)              │ Values │
+├──────────────────────┼────────┤
+│ registerData         │ 182567 │
+│ grantConsent         │ 251277 │
+│ modifyConsent        │ 40683  │
+│ modifyConsentPurpose │ 67311  │
+│ logAccess            │ 34708  │
+│ updateDataPointer    │ 42017  │
+│ revokeConsent        │ 38212  │
+└──────────────────────┴────────┘
+
+isAccessAllowed: mapping (used) vs linear scan (reference), worst case
+┌─────────┬──────────┬────────────┬─────────┬─────────────────┬──────────────┐
+│ (index) │ consents │ mappingGas │ scanGas │ mappingMedianMs │ scanMedianMs │
+├─────────┼──────────┼────────────┼─────────┼─────────────────┼──────────────┤
+│ 0       │ 1        │ 30061      │ 36599   │ 1.253           │ 1.416        │
+│ 1       │ 10       │ 30061      │ 78278   │ 1.145           │ 1.265        │
+│ 2       │ 100      │ 30061      │ 495068  │ 1.388           │ 3.307        │
+└─────────┴──────────┴────────────┴─────────┴─────────────────┴──────────────┘
+Gas for view calls is the estimate a contract caller would pay; off-chain eth_call is free.

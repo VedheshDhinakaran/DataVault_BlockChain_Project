@@ -1,0 +1,15 @@
+# Optional: a local IPFS (Kubo) node for IPFS_MODE=kubo.
+#   docker compose up -d
+# API on http://127.0.0.1:5001, gateway on http://127.0.0.1:8080
+services:
+  ipfs:
+    image: ipfs/kubo:release
+    container_name: datavault-ipfs
+    ports:
+      - "127.0.0.1:4001:4001"
+      - "127.0.0.1:5001:5001"
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ipfs-data:/data/ipfs
+volumes:
+  ipfs-data:
